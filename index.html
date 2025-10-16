@@ -21,8 +21,11 @@
   <div id="lines" class="vis"></div>
 
   <script>
-    const csvUrl = "au_capital_temps_Sep2019_to_Feb2020.csv";
+    // cache-buster so Pages refreshes the CSV
+    const csvUrl = "au_capital_temps_Sep2019_to_Feb2020.csv?v=2";
+    const dateParse = {type: "csv", parse: {date: "utc:%Y-%m-%d %H:%M:%S"}};
 
+    // MAP: capitals colored/sized by mean Feb-2020 Tmax
     const mapSpec = {
       $schema: "https://vega.github.io/schema/vega-lite/v5.json",
       width: 720, height: 520, config: {view: {stroke: null}},
@@ -37,9 +40,9 @@
           projection: {type: "equalEarth", center: [134, -25], scale: 900}
         },
         {
-          data: {url: csvUrl},
+          data: {url: csvUrl, format: dateParse},
           transform: [
-            {filter: "datum.date >= '2020-02-01' && datum.date <= '2020-02-29'"},
+            {filter: "datum.date >= datetime(2020, 1, 31, 13, 0, 0) && datum.date <= datetime(2020, 2, 29, 23, 59, 59)"},
             {
               aggregate: [
                 {op: "mean", field: "tmax_C", as: "mean_tmax_Feb2020"},
@@ -50,18 +53,16 @@
             {
               lookup: "city",
               from: {
-                data: {
-                  values: [
-                    {"city":"Sydney","lon":151.2093,"lat":-33.8688},
-                    {"city":"Melbourne","lon":144.9631,"lat":-37.8136},
-                    {"city":"Brisbane","lon":153.0260,"lat":-27.4705},
-                    {"city":"Adelaide","lon":138.6007,"lat":-34.9285},
-                    {"city":"Perth","lon":115.8570,"lat":-31.9523},
-                    {"city":"Hobart","lon":147.3272,"lat":-42.8821},
-                    {"city":"Darwin","lon":130.8456,"lat":-12.4634},
-                    {"city":"Canberra","lon":149.1300,"lat":-35.2809}
-                  ]
-                },
+                data: {values: [
+                  {"city":"Sydney","lon":151.2093,"lat":-33.8688},
+                  {"city":"Melbourne","lon":144.9631,"lat":-37.8136},
+                  {"city":"Brisbane","lon":153.0260,"lat":-27.4705},
+                  {"city":"Adelaide","lon":138.6007,"lat":-34.9285},
+                  {"city":"Perth","lon":115.8570,"lat":-31.9523},
+                  {"city":"Hobart","lon":147.3272,"lat":-42.8821},
+                  {"city":"Darwin","lon":130.8456,"lat":-12.4634},
+                  {"city":"Canberra","lon":149.1300,"lat":-35.2809}
+                ]},
                 key: "city",
                 fields: ["lon","lat"]
               }
@@ -86,11 +87,12 @@
       ]
     };
 
+    // LINE: daily Tmax for all cities Sep-2019 to Feb-2020
     const lineSpec = {
       $schema: "https://vega.github.io/schema/vega-lite/v5.json",
       width: 720, height: 360,
-      data: {url: csvUrl},
-      transform: [{filter: "datum.date >= '2019-09-01' && datum.date <= '2020-02-29'"}],
+      data: {url: csvUrl, format: dateParse},
+      transform: [{filter: "datum.date >= datetime(2019, 9, 1) && datum.date <= datetime(2020, 2, 29)"}],
       mark: {type: "line"},
       encoding: {
         x: {field: "date", type: "temporal", title: "Date"},
@@ -113,3 +115,4 @@
   </script>
 </body>
 </html>
+
