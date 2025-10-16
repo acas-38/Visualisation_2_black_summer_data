@@ -21,11 +21,10 @@
   <div id="lines" class="vis"></div>
 
   <script>
-    // cache-buster so Pages refreshes the CSV
-    const csvUrl = "au_capital_temps_Sep2019_to_Feb2020.csv";
-    const dateParse = {type: "csv", parse: {date: "utc:%Y-%m-%d %H:%M:%S"}};
+    // If your CSV is in the same folder and named exactly like this, you're good.
+    const csvUrl = "au_capital_temps_Sep2019_to_Feb2020.csv?v=3"; // cache-buster
 
-    // MAP: capitals colored/sized by mean Feb-2020 Tmax
+    // === MAP: Feb 2020 mean Tmax per capital (no date parsing needed) ===
     const mapSpec = {
       $schema: "https://vega.github.io/schema/vega-lite/v5.json",
       width: 720, height: 520, config: {view: {stroke: null}},
@@ -40,72 +39,77 @@
           projection: {type: "equalEarth", center: [134, -25], scale: 900}
         },
         {
-          data: {url: csvUrl, format: dateParse},
+          data: {url: csvUrl},
           transform: [
-            {filter: "datum.date >= datetime(2020, 1, 31, 13, 0, 0) && datum.date <= datetime(2020, 2, 29, 23, 59, 59)"},
+            {"filter": "substring(datum.date, 0, 7) == '2020-02'"},
             {
-              aggregate: [
-                {op: "mean", field: "tmax_C", as: "mean_tmax_Feb2020"},
-                {op: "mean", field: "tavg_C", as: "mean_tavg_Feb2020"}
+              "aggregate": [
+                {"op": "mean", "field": "tmax_C", "as": "mean_tmax_Feb2020"},
+                {"op": "mean", "field": "tavg_C", "as": "mean_tavg_Feb2020"}
               ],
-              groupby: ["city","state","station_id"]
+              "groupby": ["city","state","station_id"]
             },
             {
-              lookup: "city",
-              from: {
-                data: {values: [
-                  {"city":"Sydney","lon":151.2093,"lat":-33.8688},
-                  {"city":"Melbourne","lon":144.9631,"lat":-37.8136},
-                  {"city":"Brisbane","lon":153.0260,"lat":-27.4705},
-                  {"city":"Adelaide","lon":138.6007,"lat":-34.9285},
-                  {"city":"Perth","lon":115.8570,"lat":-31.9523},
-                  {"city":"Hobart","lon":147.3272,"lat":-42.8821},
-                  {"city":"Darwin","lon":130.8456,"lat":-12.4634},
-                  {"city":"Canberra","lon":149.1300,"lat":-35.2809}
-                ]},
-                key: "city",
-                fields: ["lon","lat"]
+              "lookup": "city",
+              "from": {
+                "data": {
+                  "values": [
+                    {"city":"Sydney","lon":151.2093,"lat":-33.8688},
+                    {"city":"Melbourne","lon":144.9631,"lat":-37.8136},
+                    {"city":"Brisbane","lon":153.0260,"lat":-27.4705},
+                    {"city":"Adelaide","lon":138.6007,"lat":-34.9285},
+                    {"city":"Perth","lon":115.8570,"lat":-31.9523},
+                    {"city":"Hobart","lon":147.3272,"lat":-42.8821},
+                    {"city":"Darwin","lon":130.8456,"lat":-12.4634},
+                    {"city":"Canberra","lon":149.1300,"lat":-35.2809}
+                  ]
+                },
+                "key": "city",
+                "fields": ["lon","lat"]
               }
             }
           ],
           projection: {type: "equalEarth", center: [134, -25], scale: 900},
-          mark: {type: "circle", stroke: "white", strokeWidth: 1},
+          mark: {type: "circle", stroke: "white", "strokeWidth": 1},
           encoding: {
             longitude: {field: "lon", type: "quantitative"},
             latitude: {field: "lat", type: "quantitative"},
             size: {field: "mean_tmax_Feb2020", type: "quantitative", title: "Mean Tmax (°C)", scale: {range: [60, 800]}},
             color:{field:"mean_tmax_Feb2020", type:"quantitative", title:"Mean Tmax (°C)"},
             tooltip: [
-              {field:"city", type:"nominal"},
-              {field:"state", type:"nominal"},
-              {field:"station_id", type:"nominal", title:"Station"},
-              {field:"mean_tmax_Feb2020", type:"quantitative", format:".1f"},
-              {field:"mean_tavg_Feb2020", type:"quantitative", format:".1f"}
+              {"field":"city", "type":"nominal"},
+              {"field":"state", "type":"nominal"},
+              {"field":"station_id", "type":"nominal", "title":"Station"},
+              {"field":"mean_tmax_Feb2020", "type":"quantitative", "format":".1f"},
+              {"field":"mean_tavg_Feb2020", "type":"quantitative", "format":".1f"}
             ]
           }
         }
       ]
     };
 
-    // LINE: daily Tmax for all cities Sep-2019 to Feb-2020
+    // === LINES: daily Tmax (use string dates) ===
     const lineSpec = {
       $schema: "https://vega.github.io/schema/vega-lite/v5.json",
       width: 720, height: 360,
-      data: {url: csvUrl, format: dateParse},
-      transform: [{filter: "datum.date >= datetime(2019, 9, 1) && datum.date <= datetime(2020, 2, 29)"}],
-      mark: {type: "line"},
+      data: {url: csvUrl},
+      transform: [
+        {"calculate": "substring(datum.date, 0, 10)", "as": "date_str"},
+        {"filter": "substring(datum.date, 0, 7) >= '2019-09' && substring(datum.date, 0, 7) <= '2020-02'"}
+      ],
+      mark: {"type": "line"},
       encoding: {
-        x: {field: "date", type: "temporal", title: "Date"},
-        y: {field: "tmax_C", type: "quantitative", title: "Daily Max Temp (°C)"},
-        color: {field: "city", type: "nominal", title: "City"},
+        x: {"field": "date_str", "type": "ordinal", "sort": "ascending", "title": "Date"},
+        y: {"field": "tmax_C", "type": "quantitative", "title": "Daily Max Temp (°C)"},
+        color: {"field": "city", "type": "nominal", "title": "City"},
         tooltip: [
-          {field: "date", type: "temporal", format: "%Y-%m-%d"},
-          {field: "city", type: "nominal"},
-          {field: "state", type: "nominal"},
-          {field: "tmax_C", type: "quantitative", format: ".1f"},
-          {field: "tavg_C", type: "quantitative", format: ".1f"},
-          {field: "tmin_C", type: "quantitative", format: ".1f"},
-          {field: "prcp_mm", type: "quantitative", format: ".1f"}
+          {"field": "date_str", "type": "nominal", "title": "Date"},
+          {"field": "city", "type": "nominal"},
+          {"field": "state", "type": "nominal"},
+          {"field": "tmax_C", "type": "quantitative", "format": ".1f"},
+          {"field": "tavg_C", "type": "quantitative", "format": ".1f"},
+          {"field": "tmin_C", "type": "quantitative", "format": ".1f"},
+          {"field": "prcp_mm", "type": "quantitative", "format": ".1f"}
         ]
       }
     };
@@ -115,4 +119,3 @@
   </script>
 </body>
 </html>
-
