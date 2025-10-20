@@ -1,0 +1,153 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "AUS Black Summer Fire Locations — Month & Day, Capitals, State Labels",
+  "width": 920,
+  "height": 620,
+  "projection": {"type": "mercator", "center": [134, -26], "scale": 850},
+  "params": [
+    {
+      "name": "monthSel",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": ["All", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb"],
+        "name": "Month: "
+      }
+    },
+    {
+      "name": "daySel",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": ["All", "1st", "15th", "Last"],
+        "name": "Day: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/tonywr71/GeoJson-Data/master/australian-states.json",
+        "format": {"type": "json"}
+      },
+      "mark": {"type": "geoshape", "stroke": "#9ca3af"},
+      "encoding": {"fill": {"value": "#dbeafe"}}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/Fire_locations_area.csv",
+        "format": {"type": "csv", "parse": {"date": "date:'%d/%m/%Y'"}}
+      },
+      "transform": [
+        {"calculate": "timeFormat(datum.date, '%b')", "as": "month"},
+        {
+          "calculate": "date(datum.date) == 1 ? '1st' : (date(datum.date) == 15 ? '15th' : 'Last')",
+          "as": "day_label"
+        },
+        {"filter": "monthSel == 'All' || datum.month == monthSel"},
+        {"filter": "daySel == 'All' || datum.day_label == daySel"}
+      ],
+      "mark": {"type": "circle", "size": 28, "opacity": 0.8},
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "color": {
+          "field": "month",
+          "type": "nominal",
+          "title": "Month",
+          "sort": ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"],
+          "scale": {"domain": ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"]}
+        },
+        "shape": {
+          "field": "day_label",
+          "type": "nominal",
+          "title": "Day",
+          "scale": {"domain": ["1st", "15th", "Last"]}
+        },
+        "tooltip": [
+          {"field": "date", "type": "temporal", "title": "Date"},
+          {"field": "month", "type": "nominal", "title": "Month"},
+          {"field": "day_label", "type": "nominal", "title": "Day"},
+          {"field": "confidence", "type": "quantitative", "title": "Confidence"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"city": "Sydney (NSW)", "lon": 151.2093, "lat": -33.8688},
+          {"city": "Melbourne (VIC)", "lon": 144.9631, "lat": -37.8136},
+          {"city": "Brisbane (QLD)", "lon": 153.026, "lat": -27.4705},
+          {"city": "Perth (WA)", "lon": 115.8575, "lat": -31.9505},
+          {"city": "Adelaide (SA)", "lon": 138.6007, "lat": -34.9285},
+          {"city": "Hobart (TAS)", "lon": 147.3272, "lat": -42.8821},
+          {"city": "Darwin (NT)", "lon": 130.8456, "lat": -12.4634},
+          {"city": "Canberra (ACT)", "lon": 149.13, "lat": -35.2809}
+        ]
+      },
+      "mark": {"type": "circle", "size": 60, "color": "#111111"},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "tooltip": [{"field": "city", "type": "nominal", "title": "Capital"}]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"city": "Sydney", "lon": 151.2093, "lat": -33.8688},
+          {"city": "Melbourne", "lon": 144.9631, "lat": -37.8136},
+          {"city": "Brisbane", "lon": 153.026, "lat": -27.4705},
+          {"city": "Perth", "lon": 115.8575, "lat": -31.9505},
+          {"city": "Adelaide", "lon": 138.6007, "lat": -34.9285},
+          {"city": "Hobart", "lon": 147.3272, "lat": -42.8821},
+          {"city": "Darwin", "lon": 130.8456, "lat": -12.4634},
+          {"city": "Canberra", "lon": 149.13, "lat": -35.2809}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "dy": -8,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#111111"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "city"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"state": "Western Australia", "lon": 122, "lat": -25.5},
+          {"state": "Northern Territory", "lon": 133, "lat": -19},
+          {"state": "South Australia", "lon": 135.5, "lat": -30},
+          {"state": "Queensland", "lon": 145.5, "lat": -21},
+          {"state": "New South Wales", "lon": 147, "lat": -32},
+          {"state": "Victoria", "lon": 144, "lat": -36.5},
+          {"state": "Tasmania", "lon": 146.5, "lat": -42},
+          {"state": "Australian Capital Territory", "lon": 149.05, "lat": -35.3}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#374151",
+        "opacity": 0.85
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "state"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "legend": {"orient": "bottom"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12}
+  }
+}
