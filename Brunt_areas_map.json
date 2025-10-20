@@ -7,7 +7,7 @@
 
   "layer": [
     {
-      /* Ocean background */
+
       "data": {
         "values": [{}]
       },
@@ -23,7 +23,7 @@
       }
     },
     {
-      /* World land masses */
+
       "data": {
         "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
         "format": { "type": "topojson", "feature": "countries" }
@@ -31,7 +31,7 @@
       "mark": { "type": "geoshape", "fill": "#d6e6b3", "stroke": "white" }
     },
     {
-      /* Burnt area outlines */
+
       "data": {
         "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/burnt_area_small.geojson",
         "format": { "type": "json", "property": "features" }
@@ -44,7 +44,7 @@
       }
     },
     {
-      /* Australian state borders */
+
       "data": {
         "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.geojson",
         "format": { "type": "json", "property": "features" }
