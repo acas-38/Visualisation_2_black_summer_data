@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AUS GEEBAM Fire Maps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2019–2020 Black Summer Visualisations</title>
 
   <!-- Vega libraries -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -11,53 +11,125 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
   <style>
+    :root {
+      --card-bg: #fff;
+      --shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
       margin: 0;
-      padding: 40px;
+      padding: 32px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      background: #f6f7fb;
+      color: #111;
     }
     h1 {
+      margin: 0 0 8px;
       text-align: center;
-      margin-bottom: 50px;
+      font-weight: 700;
     }
-    .map-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 60px;
+    p.sub {
+      margin: 0 0 28px;
+      text-align: center;
+      color: #555;
+    }
+    .grid {
+      display: grid;
+      gap: 28px;
+      grid-template-columns: 1fr;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+    .card h2 {
+      margin: 8px 8px 16px;
+      font-size: 18px;
+      color: #333;
     }
     .vis {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 100%;
+      height: auto;
+    }
+    .footer {
+      margin-top: 28px;
+      text-align: center;
+      color: #666;
+      font-size: 12px;
+    }
+    .links {
+      margin-top: 6px;
+      text-align: center;
+      font-size: 12px;
+    }
+    .links a {
+      color: #2563eb;
+      text-decoration: none;
     }
   </style>
 </head>
-
 <body>
-  <h1>Australian GEEBAM Fire Visualisations (2019–2020)</h1>
+  <h1>2019–2020 Black Summer Visualisations</h1>
+  <p class="sub">Burnt area polygons, fire locations, and temperature comparison</p>
 
-  <div class="map-container">
-    <!-- These divs are where each Vega-Lite map will be embedded -->
-    <div id="map1" class="vis"></div>
-    <div id="map2" class="vis"></div>
+  <div class="grid">
+    <div class="card">
+      <h2>Burnt Area Map</h2>
+      <div id="vis1" class="vis"></div>
+    </div>
+
+    <div class="card">
+      <h2>Fire Locations Map</h2>
+      <div id="vis2" class="vis"></div>
+    </div>
+
+    <div class="card">
+      <h2>Temperature Comparison</h2>
+      <div id="vis3" class="vis"></div>
+    </div>
   </div>
 
+  <div class="links">
+    Raw specs:
+    <a id="l1" href="#" target="_blank" rel="noopener">Burnt Area</a> ·
+    <a id="l2" href="#" target="_blank" rel="noopener">Fire Locations</a> ·
+    <a id="l3" href="#" target="_blank" rel="noopener">Temp Comparison</a>
+  </div>
+
+  <div class="footer">Powered by Vega-Lite & vega-embed</div>
+
   <script>
-    // 🗺️ Just replace these two URLs with your own Vega-Lite JSON files (raw GitHub links)
-    const map1URL = "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Burnt_area_map";
-    const map2URL = "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Fire_locations_map";
+    // ✅ Correct .json URLs
+    const VIS_URLS = {
+      burnt: "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/Burnt_area_map.json",
+      fires: "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/Fire_locations_map.json",
+      temps: "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/Temp_Comp_graph.json"
+    };
 
-    // 🔧 Embed each map
-    vegaEmbed('#map1', map1URL, { actions: false }).then(() => {
-      console.log("Map 1 loaded");
-    });
+    // Update link URLs
+    document.getElementById("l1").href = VIS_URLS.burnt;
+    document.getElementById("l2").href = VIS_URLS.fires;
+    document.getElementById("l3").href = VIS_URLS.temps;
 
-    vegaEmbed('#map2', map2URL, { actions: false }).then(() => {
-      console.log("Map 2 loaded");
-    });
+    const embedOpts = { actions: false, renderer: "canvas" };
+
+    function mount(selector, specUrl) {
+      vegaEmbed(selector, specUrl, embedOpts).catch(err => {
+        console.error("Embed error for", specUrl, err);
+        const el = document.querySelector(selector);
+        el.innerHTML = `
+          <div style="padding:12px;color:#b91c1c;background:#fee2e2;border:1px solid #fecaca;border-radius:10px;">
+            <strong>Couldn’t load the spec.</strong><br/>
+            URL: <code>${specUrl}</code><br/>
+            Tip: Make sure this is the <em>Raw</em> URL to a valid Vega-Lite JSON file.
+          </div>`;
+      });
+    }
+
+    mount("#vis1", VIS_URLS.burnt);
+    mount("#vis2", VIS_URLS.fires);
+    mount("#vis3", VIS_URLS.temps);
   </script>
 </body>
 </html>
