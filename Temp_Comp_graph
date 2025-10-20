@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Average vs Expected Monthly Temperature — Australian Capitals (2019–2020)",
+  "width": 280,
+  "height": 180,
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv",
+    "format": {"type": "csv"}
+  },
+
+  "transform": [
+    {
+      "fold": ["ave_max_temp", "expected temp"],
+      "as": ["Series", "Temperature"]
+    },
+    {
+      "calculate": "datum.Series === 'ave_max_temp' ? 'Actual' : 'Expected'",
+      "as": "Type"
+    }
+  ],
+
+  "facet": {
+    "field": "city",
+    "type": "nominal",
+    "columns": 3,
+    "title": null
+  },
+
+  "spec": {
+    "mark": {"type": "line", "interpolate": "monotone", "point": true},
+    "encoding": {
+      "x": {
+        "field": "month",
+        "type": "ordinal",
+        "sort": ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"],
+        "title": "Month"
+      },
+      "y": {
+        "field": "Temperature",
+        "type": "quantitative",
+        "title": "Temperature (°C)"
+      },
+      "color": {
+        "field": "Type",
+        "type": "nominal",
+        "title": "",
+        "scale": {"domain": ["Actual", "Expected"], "range": ["#e25822", "#333"]}
+      },
+      "strokeDash": {
+        "field": "Type",
+        "type": "nominal",
+        "scale": {"domain": ["Actual", "Expected"], "range": [[], [4, 2]]}
+      },
+      "tooltip": [
+        {"field": "city", "type": "nominal", "title": "City"},
+        {"field": "month", "type": "ordinal", "title": "Month"},
+        {"field": "Type", "type": "nominal"},
+        {"field": "Temperature", "type": "quantitative", "title": "Temp (°C)"}
+      ]
+    }
+  },
+
+  "config": {
+    "facet": {"spacing": 20},
+    "view": {"stroke": null},
+    "legend": {"orient": "bottom", "labelFontSize": 12}
+  }
+}
