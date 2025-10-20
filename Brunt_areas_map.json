@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 950,
   "height": 700,
-  "title": "AUS GEEBAM Burnt Area Outlines (with Ocean Background)",
+  "title": "AUS GEEBAM Burnt Area",
   "projection": { "type": "mercator", "center": [135, -30], "scale": 800 },
 
   "layer": [
