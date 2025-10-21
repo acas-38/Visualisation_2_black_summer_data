@@ -35,6 +35,7 @@
                 "range": ["#e25822", "#333"]
               },
               "legend": {
+                "title":"null"
                 "labelFontSize": 11,
                 "orient": "bottom",
                 "direction": "horizontal",
