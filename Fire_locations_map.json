@@ -3,7 +3,7 @@
   "title": "AUS Black Summer Fire Locations — Month & Day, Capitals, State Labels",
   "width": 920,
   "height": 620,
-  "projection": {"type": "mercator", "center": [134, -26], "scale": 850},
+  "projection": {"type": "mercator", "center": [134, -30], "scale": 850},
   "params": [
     {
       "name": "monthSel",
