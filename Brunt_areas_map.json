@@ -1,18 +1,18 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 950,
+  "width": 900,
   "height": 700,
-  "title": "AUS GEEBAM Burnt Area Outlines with Capitals",
+  "title": "AUS GEEBAM Burnt Area Outlines",
   "projection": { "type": "mercator", "center": [135, -30], "scale": 850 },
-  "layer": [
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/burnt_area_small.geojson",
-        "format": { "type": "json", "property": "features" }
-      },
-      "mark": { "type": "geoshape", "fill": "none", "stroke": "brown", "strokeWidth": 0.7 }
-    },
-  
-  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/c83629aeee959d719fbea3177d89bff11a3ce5fe/burnt_area_small.geojson",
+    "format": { "type": "json", "property": "features" }
+  },
+  "mark": {
+    "type": "geoshape",
+    "fill": "none",
+    "stroke": "red",
+    "strokeWidth": 0.8
+  },
   "config": { "view": { "stroke": null } }
 }
