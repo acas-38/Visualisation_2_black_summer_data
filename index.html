@@ -73,14 +73,27 @@
   <h1>2019–2020 Black Summer Bushfires</h1>
   <p class="sub">Timeline of events and Factors</p>
 
-  <div class="grid">
-  <!-- Row 1: Fire Locations -->
-  <div class="card">
-    <h2>Fire Locations Map</h2>
-    <div id="vis2" class="vis"></div>
+<div class="grid">
+
+  <!-- 🔥 Fire Locations Map + Text -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 28px;">
+    <div class="card">
+      <h2>Fire Locations Map</h2>
+      <div id="vis2" class="vis"></div>
+    </div>
+
+    <div class="card">
+      <h2>About the Fire Locations</h2>
+      <p>
+        This map shows recorded bushfire locations during the 2019–2020 Black Summer season.
+        Each data point represents a fire detected via satellite thermal hotspots and
+        verified incident reports. The concentration of points highlights the extent of
+        major fire zones across the eastern seaboard and southern Australia.
+      </p>
+    </div>
   </div>
 
-  <!-- Row 2: Temps + Rain side by side -->
+  <!-- 🌡 Temps + Rain side by side -->
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 28px;">
     <div class="card">
       <h2>Temperature Comparison</h2>
@@ -93,12 +106,25 @@
     </div>
   </div>
 
-  <!-- Row 3: Burnt Area -->
-  <div class="card">
-    <h2>Burnt Area Map</h2>
-    <div id="vis1" class="vis"></div>
+  <!-- 🔴 Burnt Area Map + Text -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 28px;">
+    <div class="card">
+      <h2>Burnt Area Map</h2>
+      <div id="vis1" class="vis"></div>
+    </div>
+
+    <div class="card">
+      <h2>About the Burnt Area Map</h2>
+      <p>
+        The GEEBAM dataset outlines the geographic extent of areas affected by fire during
+        the Black Summer period. Each red contour represents burnt vegetation as identified
+        through post-fire remote sensing imagery. State boundaries and capitals provide
+        context for regional impact assessment.
+      </p>
+    </div>
   </div>
 </div>
+
 
 
   <div class="links">
