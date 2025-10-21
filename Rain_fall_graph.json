@@ -6,8 +6,8 @@
       "hconcat": [
         {
           "title": "Melbourne",
-          "width": 220,
-          "height": 160,
+          "width": 100,
+          "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
           },
@@ -30,8 +30,8 @@
         },
         {
           "title": "Sydney",
-          "width": 220,
-          "height": 160,
+          "width": 100,
+          "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
           },
@@ -54,8 +54,8 @@
         },
         {
           "title": "Hobart",
-          "width": 220,
-          "height": 160,
+          "width": 100,
+          "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
           },
@@ -78,8 +78,8 @@
         },
         {
           "title": "Perth",
-          "width": 220,
-          "height": 160,
+          "width": 100,
+          "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
           },
@@ -106,8 +106,8 @@
       "hconcat": [
         {
           "title": "Adelaide",
-          "width": 220,
-          "height": 160,
+          "width": 100,
+          "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
           },
@@ -130,8 +130,8 @@
         },
         {
           "title": "Darwin",
-          "width": 220,
-          "height": 160,
+          "width": 100,
+          "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
           },
@@ -154,9 +154,9 @@
         },
         {
           "title": "Canberra",
-          "width": 220
+          "width": 100
           ,
-          "height": 160,
+          "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
           },
@@ -179,8 +179,8 @@
         },
         {
           "title": "Brisbane",
-          "width": 220,
-          "height": 160,
+          "width": 100,
+          "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
           },
