@@ -6,7 +6,7 @@
       "hconcat": [
         {
           "title": "Melbourne",
-          "width": 100,
+          "width": 120,
           "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
@@ -30,7 +30,7 @@
         },
         {
           "title": "Sydney",
-          "width": 100,
+          "width": 120,
           "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
@@ -54,7 +54,7 @@
         },
         {
           "title": "Hobart",
-          "width": 100,
+          "width": 120,
           "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
@@ -78,7 +78,7 @@
         },
         {
           "title": "Perth",
-          "width": 100,
+          "width": 120,
           "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
@@ -106,7 +106,7 @@
       "hconcat": [
         {
           "title": "Adelaide",
-          "width": 100,
+          "width": 120,
           "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
@@ -130,7 +130,7 @@
         },
         {
           "title": "Darwin",
-          "width": 100,
+          "width": 120,
           "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
@@ -154,7 +154,7 @@
         },
         {
           "title": "Canberra",
-          "width": 100
+          "width": 120
           ,
           "height": 70,
           "data": {
@@ -179,7 +179,7 @@
         },
         {
           "title": "Brisbane",
-          "width": 100,
+          "width": 120,
           "height": 70,
           "data": {
             "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
