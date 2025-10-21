@@ -35,9 +35,7 @@
                 "range": ["#e25822", "#333"]
               },
               "legend": {
-                "title": "Temperature Type",
                 "labelFontSize": 11,
-                "titleFontSize": 12,
                 "orient": "bottom",
                 "direction": "horizontal",
                 "labelExpr": "datum.label === 'ave_max_temp' ? 'Actual Temperature' : datum.label === 'expected temp' ? 'Expected Temperature' : datum.label"
