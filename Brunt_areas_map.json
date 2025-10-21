@@ -6,16 +6,6 @@
   "projection": { "type": "mercator", "center": [135, -30], "scale": 850 },
   "layer": [
     {
-      "data": { "values": [{}] },
-      "mark": { "type": "rect", "color": "#b3d9ff" },
-      "encoding": {
-        "x": { "value": 0 },
-        "x2": { "value": 950 },
-        "y": { "value": 0 },
-        "y2": { "value": 700 }
-      }
-    },
-    {
       "data": {
         "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
         "format": { "type": "topojson", "feature": "countries" }
@@ -39,3 +29,5 @@
     },
   
   ],
+  "config": { "view": { "stroke": null } }
+}
