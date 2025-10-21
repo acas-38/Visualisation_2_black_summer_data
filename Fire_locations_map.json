@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "AUS Black Summer Fire Locations — Month & Day, Capitals, State Labels",
-  "width": 620,
+  "title": "Black Summer Fire Locations",
+  "width": 700,
   "height": 620,
   "projection": {"type": "mercator", "center": [134, -30], "scale": 850},
   "params": [
