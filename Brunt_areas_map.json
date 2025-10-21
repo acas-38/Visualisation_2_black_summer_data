@@ -10,7 +10,7 @@
         "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json",
         "format": { "type": "topojson", "feature": "land" }
       },
-      "mark": { "type": "geoshape", "fill": "#eaeaea", "stroke": "#aaa", "strokeWidth": 0.5 }
+      "mark": { "type": "geoshape", "fill": "#0ebb39d2", "stroke": "#aaaaaa", "strokeWidth": 0.5 }
     },
     {
       "data": {
