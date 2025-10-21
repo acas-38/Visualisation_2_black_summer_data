@@ -1,0 +1,207 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": { "view": { "stroke": null } },
+  "vconcat": [
+    {
+      "hconcat": [
+        {
+          "title": "Melbourne",
+          "width": 220,
+          "height": 160,
+          "data": {
+            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
+          },
+          "transform": [
+            { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
+            { "filter": "datum.city_fix == 'Melbourne'" },
+            { "fold": ["rain_act", "rain_exp"], "as": ["series", "mm"] }
+          ],
+          "mark": { "type": "line", "point": true },
+          "encoding": {
+            "x": {
+              "field": "month",
+              "type": "ordinal",
+              "sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],
+              "axis": { "title": null }
+            },
+            "y": { "field": "mm", "type": "quantitative", "title": "Rainfall (mm)" },
+            "color": { "field": "series", "type": "nominal", "title": "" }
+          }
+        },
+        {
+          "title": "Sydney",
+          "width": 220,
+          "height": 160,
+          "data": {
+            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
+          },
+          "transform": [
+            { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
+            { "filter": "datum.city_fix == 'Sydney'" },
+            { "fold": ["rain_act", "rain_exp"], "as": ["series", "mm"] }
+          ],
+          "mark": { "type": "line", "point": true },
+          "encoding": {
+            "x": {
+              "field": "month",
+              "type": "ordinal",
+              "sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],
+              "axis": { "title": null }
+            },
+            "y": { "field": "mm", "type": "quantitative", "title": "Rainfall (mm)" },
+            "color": { "field": "series", "type": "nominal", "title": "" }
+          }
+        },
+        {
+          "title": "Hobart",
+          "width": 220,
+          "height": 160,
+          "data": {
+            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
+          },
+          "transform": [
+            { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
+            { "filter": "datum.city_fix == 'Hobart'" },
+            { "fold": ["rain_act", "rain_exp"], "as": ["series", "mm"] }
+          ],
+          "mark": { "type": "line", "point": true },
+          "encoding": {
+            "x": {
+              "field": "month",
+              "type": "ordinal",
+              "sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],
+              "axis": { "title": null }
+            },
+            "y": { "field": "mm", "type": "quantitative", "title": "Rainfall (mm)" },
+            "color": { "field": "series", "type": "nominal", "title": "" }
+          }
+        },
+        {
+          "title": "Perth",
+          "width": 220,
+          "height": 160,
+          "data": {
+            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
+          },
+          "transform": [
+            { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
+            { "filter": "datum.city_fix == 'Perth'" },
+            { "fold": ["rain_act", "rain_exp"], "as": ["series", "mm"] }
+          ],
+          "mark": { "type": "line", "point": true },
+          "encoding": {
+            "x": {
+              "field": "month",
+              "type": "ordinal",
+              "sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],
+              "axis": { "title": null }
+            },
+            "y": { "field": "mm", "type": "quantitative", "title": "Rainfall (mm)" },
+            "color": { "field": "series", "type": "nominal", "title": "" }
+          }
+        }
+      ]
+    },
+    {
+      "hconcat": [
+        {
+          "title": "Adelaide",
+          "width": 220,
+          "height": 160,
+          "data": {
+            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
+          },
+          "transform": [
+            { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
+            { "filter": "datum.city_fix == 'Adelaide'" },
+            { "fold": ["rain_act", "rain_exp"], "as": ["series", "mm"] }
+          ],
+          "mark": { "type": "line", "point": true },
+          "encoding": {
+            "x": {
+              "field": "month",
+              "type": "ordinal",
+              "sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],
+              "axis": { "title": null }
+            },
+            "y": { "field": "mm", "type": "quantitative", "title": "Rainfall (mm)" },
+            "color": { "field": "series", "type": "nominal", "title": "" }
+          }
+        },
+        {
+          "title": "Darwin",
+          "width": 220,
+          "height": 160,
+          "data": {
+            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
+          },
+          "transform": [
+            { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
+            { "filter": "datum.city_fix == 'Darwin'" },
+            { "fold": ["rain_act", "rain_exp"], "as": ["series", "mm"] }
+          ],
+          "mark": { "type": "line", "point": true },
+          "encoding": {
+            "x": {
+              "field": "month",
+              "type": "ordinal",
+              "sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],
+              "axis": { "title": null }
+            },
+            "y": { "field": "mm", "type": "quantitative", "title": "Rainfall (mm)" },
+            "color": { "field": "series", "type": "nominal", "title": "" }
+          }
+        },
+        {
+          "title": "Canberra",
+          "width": 220
+          ,
+          "height": 160,
+          "data": {
+            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
+          },
+          "transform": [
+            { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
+            { "filter": "datum.city_fix == 'Canberra'" },
+            { "fold": ["rain_act", "rain_exp"], "as": ["series", "mm"] }
+          ],
+          "mark": { "type": "line", "point": true },
+          "encoding": {
+            "x": {
+              "field": "month",
+              "type": "ordinal",
+              "sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],
+              "axis": { "title": null }
+            },
+            "y": { "field": "mm", "type": "quantitative", "title": "Rainfall (mm)" },
+            "color": { "field": "series", "type": "nominal", "title": "" }
+          }
+        },
+        {
+          "title": "Brisbane",
+          "width": 220,
+          "height": 160,
+          "data": {
+            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv"
+          },
+          "transform": [
+            { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
+            { "filter": "datum.city_fix == 'Brisbane'" },
+            { "fold": ["rain_act", "rain_exp"], "as": ["series", "mm"] }
+          ],
+          "mark": { "type": "line", "point": true },
+          "encoding": {
+            "x": {
+              "field": "month",
+              "type": "ordinal",
+              "sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],
+              "axis": { "title": null }
+            },
+            "y": { "field": "mm", "type": "quantitative", "title": "Rainfall (mm)" },
+            "color": { "field": "series", "type": "nominal", "title": "" }
+          }
+        }
+      ]
+    }
+  ]
+}
