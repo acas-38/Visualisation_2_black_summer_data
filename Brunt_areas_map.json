@@ -2,61 +2,18 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 950,
   "height": 700,
-  "title": "AUS GEEBAM Burnt Area",
-  "projection": { "type": "mercator", "center": [135, -30], "scale": 800 },
+  "title": "AUS GEEBAM Burnt Areas",
+  "projection": {"type": "mercator", "center": [135, -30], "scale": 800},
+  "data": {
+    "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/burnt_area_small.geojson",
+    "format": {"type": "json", "property": "features"}
+  },
 
-  "layer": [
-    {
-
-      "data": {
-        "values": [{}]
-      },
-      "mark": {
-        "type": "rect",
-        "color": "#b3d9ff"
-      },
-      "encoding": {
-        "x": { "value": 0 },
-        "x2": { "value": 950 },
-        "y": { "value": 0 },
-        "y2": { "value": 700 }
-      }
-    },
-    {
-
-      "data": {
-        "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
-        "format": { "type": "topojson", "feature": "countries" }
-      },
-      "mark": { "type": "geoshape", "fill": "#d6e6b3", "stroke": "white" }
-    },
-    {
-
-      "data": {
-        "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/burnt_area_small.geojson",
-        "format": { "type": "json", "property": "features" }
-      },
-      "mark": {
-        "type": "geoshape",
-        "fill": "none",
-        "stroke": "black",
-        "strokeWidth": 0.7
-      }
-    },
-    {
-
-      "data": {
-        "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.geojson",
-        "format": { "type": "json", "property": "features" }
-      },
-      "mark": {
-        "type": "geoshape",
-        "fill": "none",
-        "stroke": "#333",
-        "strokeWidth": 0.6
-      }
-    }
-  ],
-
-  "config": { "view": { "stroke": null } }
+  "mark": {
+    "type": "geoshape",
+    "fill": "none",
+    "stroke": "black",
+    "strokeWidth": 0.7
+  },
+  "config": {"view": {"stroke": null}}
 }
