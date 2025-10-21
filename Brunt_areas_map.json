@@ -2,18 +2,46 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 950,
   "height": 700,
-  "title": "AUS GEEBAM Burnt Areas",
-  "projection": {"type": "mercator", "center": [135, -30], "scale": 800},
-  "data": {
-    "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/burnt_area_small.geojson",
-    "format": {"type": "json", "property": "features"}
+  "title": "AUS GEEBAM Burnt Area Outlines (DN 11–24)",
+  "projection": {
+    "type": "mercator",
+    "center": [135, -25],
+    "scale": 900
   },
-
-  "mark": {
-    "type": "geoshape",
-    "fill": "none",
-    "stroke": "black",
-    "strokeWidth": 0.7
-  },
-  "config": {"view": {"stroke": null}}
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+        "format": { "type": "topojson", "feature": "countries" }
+      },
+      "mark": { "type": "geoshape", "fill": "#0aec96", "stroke": "white" }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/burnt_area_small.geojson",
+        "format": { "type": "json", "property": "features" }
+      },
+      
+     
+      "mark": {
+        "type": "geoshape",
+        "fill": "none",
+        "stroke": "black",
+        "strokeWidth": 0.8
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.geojson",
+        "format": { "type": "json", "property": "features" }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "none",
+        "stroke": "#333",
+        "strokeWidth": 0.6
+      }
+    }
+  ],
+  "config": { "view": { "stroke": null } }
 }
