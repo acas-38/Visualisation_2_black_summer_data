@@ -17,25 +17,44 @@
     }
     body {
       margin: 0;
-      padding: 32px;
+      padding: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
       background: #f6f7fb;
       color: #111;
     }
-    h1 {
-      margin: 0 0 8px;
+
+    .hero {
+      background-image: url("https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/banner.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      font-weight: 700;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+      border-bottom: 4px solid #222;
     }
-    p.sub {
-      margin: 0 0 28px;
-      text-align: center;
-      color: #555;
+
+    .hero h1 {
+      font-size: 36px;
+      margin: 0;
+      font-weight: 800;
     }
+
+    .hero p.sub {
+      margin: 8px 0 0;
+      font-size: 18px;
+      color: #f1f1f1;
+    }
+
     .grid {
       display: grid;
       gap: 28px;
       grid-template-columns: 1fr;
+      padding: 32px;
     }
     .card {
       background: var(--card-bg);
@@ -53,7 +72,7 @@
       height: auto;
     }
     .footer {
-      margin-top: 28px;
+      margin: 32px 0;
       text-align: center;
       color: #666;
       font-size: 12px;
@@ -70,62 +89,63 @@
   </style>
 </head>
 <body>
-  <h1>2019–2020 Black Summer Bushfires</h1>
-  <p class="sub">Timeline of events and Factors</p>
-
-<div class="grid">
-
-  <!-- 🔥 Fire Locations Map + Text -->
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 28px;">
-    <div class="card">
-      <h2>Fire Locations Map</h2>
-      <div id="vis2" class="vis"></div>
-    </div>
-
-    <div class="card">
-      <h2>About the Fire Locations</h2>
-      <p>
-        This map shows recorded bushfire locations during the 2019–2020 Black Summer season.
-        Each data point represents a fire detected via satellite thermal hotspots and
-        verified incident reports. The concentration of points highlights the extent of
-        major fire zones across the eastern seaboard and southern Australia.
-      </p>
-    </div>
+  <!-- 🖼 HERO BANNER -->
+  <div class="hero">
+    <h1>2019–2020 Black Summer Bushfires</h1>
+    <p class="sub">Timeline of Events and Contributing Factors</p>
   </div>
 
-  <!-- 🌡 Temps + Rain side by side -->
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 28px;">
-    <div class="card">
-      <h2>Temperature Comparison</h2>
-      <div id="vis3" class="vis"></div>
+  <div class="grid">
+
+    <!-- 🔥 Fire Locations Map + Text -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 28px;">
+      <div class="card">
+        <h2>Fire Locations Map</h2>
+        <div id="vis2" class="vis"></div>
+      </div>
+
+      <div class="card">
+        <h2>About the Fire Locations</h2>
+        <p>
+          This map shows recorded bushfire locations during the 2019–2020 Black Summer season.
+          Each data point represents a fire detected via satellite thermal hotspots and
+          verified incident reports. The concentration of points highlights the extent of
+          major fire zones across the eastern seaboard and southern Australia.
+        </p>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>Rainfall Graphs</h2>
-      <div id="vis4" class="vis"></div>
+    <!-- 🌡 Temps + Rain side by side -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 28px;">
+      <div class="card">
+        <h2>Temperature Comparison</h2>
+        <div id="vis3" class="vis"></div>
+      </div>
+
+      <div class="card">
+        <h2>Rainfall Graphs</h2>
+        <div id="vis4" class="vis"></div>
+      </div>
+    </div>
+
+    <!-- 🔴 Burnt Area Map + Text -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 28px;">
+      <div class="card">
+        <h2>Burnt Area Map</h2>
+        <div id="vis1" class="vis"></div>
+      </div>
+
+      <div class="card">
+        <h2>About the Burnt Area Map</h2>
+        <p>
+          The GEEBAM dataset outlines the geographic extent of areas affected by fire during
+          the Black Summer period. Each red contour represents burnt vegetation as identified
+          through post-fire remote sensing imagery. State boundaries and capitals provide
+          context for regional impact assessment.
+        </p>
+      </div>
     </div>
   </div>
-
-  <!-- 🔴 Burnt Area Map + Text -->
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 28px;">
-    <div class="card">
-      <h2>Burnt Area Map</h2>
-      <div id="vis1" class="vis"></div>
-    </div>
-
-    <div class="card">
-      <h2>About the Burnt Area Map</h2>
-      <p>
-        The GEEBAM dataset outlines the geographic extent of areas affected by fire during
-        the Black Summer period. Each red contour represents burnt vegetation as identified
-        through post-fire remote sensing imagery. State boundaries and capitals provide
-        context for regional impact assessment.
-      </p>
-    </div>
-  </div>
-</div>
-
-
 
   <div class="links">
     Raw specs:
@@ -138,7 +158,6 @@
   <div class="footer">Powered by Vega-Lite & vega-embed</div>
 
   <script>
-    // ✅ Correct RAW JSON URLs
     const VIS_URLS = {
       burnt: "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/Brunt_areas_map.json",
       fires: "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/Fire_locations_map.json",
@@ -146,7 +165,6 @@
       rain:  "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/Rain_fall_graph.json"
     };
 
-    // Update link URLs
     document.getElementById("l1").href = VIS_URLS.burnt;
     document.getElementById("l2").href = VIS_URLS.fires;
     document.getElementById("l3").href = VIS_URLS.temps;
@@ -167,7 +185,6 @@
       });
     }
 
-    // Mount all visualisations
     mount("#vis1", VIS_URLS.burnt);
     mount("#vis2", VIS_URLS.fires);
     mount("#vis3", VIS_URLS.temps);
@@ -175,4 +192,5 @@
   </script>
 </body>
 </html>
+
 
