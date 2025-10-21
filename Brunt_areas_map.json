@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 900,
+  "width": 850,
   "height": 700,
   "title": "Australian GEEBAM Burnt Areas with States and Capitals",
   "projection": { "type": "mercator", "center": [135, -30], "scale": 850 },
