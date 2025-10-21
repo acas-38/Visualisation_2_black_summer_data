@@ -2,46 +2,126 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 950,
   "height": 700,
-  "title": "AUS GEEBAM Burnt Area Outlines (DN 11–24)",
-  "projection": {
-    "type": "mercator",
-    "center": [135, -25],
-    "scale": 900
-  },
+  "title": "AUS GEEBAM Burnt Area Outlines with Capitals",
+  "projection": { "type": "mercator", "center": [135, -30], "scale": 850 },
   "layer": [
+    {
+      "data": { "values": [{}] },
+      "mark": { "type": "rect", "color": "#b3d9ff" },
+      "encoding": {
+        "x": { "value": 0 },
+        "x2": { "value": 950 },
+        "y": { "value": 0 },
+        "y2": { "value": 700 }
+      }
+    },
     {
       "data": {
         "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
         "format": { "type": "topojson", "feature": "countries" }
       },
-      "mark": { "type": "geoshape", "fill": "#0aec96", "stroke": "white" }
+      "mark": { "type": "geoshape", "fill": "#41da62", "stroke": "white" }
     },
     {
       "data": {
         "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/burnt_area_small.geojson",
         "format": { "type": "json", "property": "features" }
       },
-      
-     
-      "mark": {
-        "type": "geoshape",
-        "fill": "none",
-        "stroke": "black",
-        "strokeWidth": 0.8
-      }
+      "mark": { "type": "geoshape", "fill": "none", "stroke": "brown", "strokeWidth": 0.7 }
     },
     {
       "data": {
         "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.geojson",
         "format": { "type": "json", "property": "features" }
       },
-      "mark": {
-        "type": "geoshape",
-        "fill": "none",
-        "stroke": "#333",
-        "strokeWidth": 0.6
+      "mark": { "type": "geoshape", "fill": "none", "stroke": "#333", "strokeWidth": 0.6 }
+    },
+    {
+      
+      "data": {
+        "values": [
+          { "city": "Canberra", "lon": 147, "lat": -35.28 },
+          { "city": "Sydney", "lon": 153, "lat": -33.87 },
+          { "city": "Melbourne", "lon": 144.96, "lat": -37.81 },
+          { "city": "Brisbane", "lon": 153.03, "lat": -27.47 },
+          { "city": "Perth", "lon": 115.86, "lat": -31.95 },
+          { "city": "Adelaide", "lon": 138.60, "lat": -34.93 },
+          { "city": "Hobart", "lon": 149, "lat": -43.5 },
+          { "city": "Darwin", "lon": 129, "lat": -12.46 }
+        ]
+      },
+      "mark": { "type": "text", "fontSize": 10, "fontWeight": "bold", "dy": -5 },
+      "encoding": {
+        "longitude": { "field": "lon", "type": "quantitative" },
+        "latitude": { "field": "lat", "type": "quantitative" },
+        "text": { "field": "city" },
+        "color": { "value": "black" }
       }
+    },
+    {
+  "data": {
+    "values": [
+      { "city": "Canberra", "lon": 149.13, "lat": -35.28 },
+      { "city": "Sydney", "lon": 151.21, "lat": -33.87 },
+      { "city": "Melbourne", "lon": 144.96, "lat": -37.81 },
+      { "city": "Brisbane", "lon": 153.03, "lat": -27.47 },
+      { "city": "Perth", "lon": 115.86, "lat": -31.95 },
+      { "city": "Adelaide", "lon": 138.60, "lat": -34.93 },
+      { "city": "Hobart", "lon": 147.33, "lat": -42.88 },
+      { "city": "Darwin", "lon": 130.84, "lat": -12.46 }
+    ]
+  },
+  "mark": { "type": "circle", "color": "red", "size": 40 },
+  "encoding": {
+    "longitude": { "field": "lon", "type": "quantitative" },
+    "latitude": { "field": "lat", "type": "quantitative" }
+  }
+},
+
+    {
+  "data": {
+    "values": [
+      { "state": "Western Australia", "lon": 121, "lat": -25 },
+      { "state": "Northern Territory", "lon": 133, "lat": -19 },
+      { "state": "Queensland", "lon": 146, "lat": -21 },
+      { "state": "South Australia", "lon": 136, "lat": -30 },
+      { "state": "New South Wales", "lon": 146, "lat": -32 },
+      { "state": "Victoria", "lon": 145, "lat": -37 },
+      { "state": "Tasmania", "lon": 147, "lat": -42 }
+    ]
+  },
+  "mark": { "type": "text", "fontSize": 12, "fontWeight": "bold" },
+  "encoding": {
+    "longitude": { "field": "lon", "type": "quantitative" },
+    "latitude": { "field": "lat", "type": "quantitative" },
+    "text": { "field": "state" },
+    "color": { "value": "#333" }
+  }
+},
+{
+  "data": {
+    "values": [
+      {"category": "Burnt Area", "color": "black"},
+      {"category": "State Border", "color": "#333"},
+      {"category": "Capital City", "color": "red"}
+    ]
+  },
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "category", "type": "nominal", "axis": null},
+    "color": {
+      "field": "category",
+      "type": "nominal",
+      "scale": {"domain": ["Burnt Area", "State Border", "Capital City"],
+                "range": ["black", "#333", "red"]},
+      "legend": {"title": "Map Legend"}
     }
+  }
+}
+
+
+    
   ],
   "config": { "view": { "stroke": null } }
 }
+
