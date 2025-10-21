@@ -1,6 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Actual Mean Temperature vs Forcasted Monthly Temperature — Australian Capitals",
   "vconcat": [
     {
       "hconcat": [
