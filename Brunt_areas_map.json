@@ -2,17 +2,30 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 900,
   "height": 700,
-  "title": "AUS GEEBAM Burnt Area Outlines",
+  "title": "Australian GEEBAM Burnt Areas with State Borders",
   "projection": { "type": "mercator", "center": [135, -30], "scale": 850 },
-  "data": {
-    "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/c83629aeee959d719fbea3177d89bff11a3ce5fe/burnt_area_small.geojson",
-    "format": { "type": "json", "property": "features" }
-  },
-  "mark": {
-    "type": "geoshape",
-    "fill": "none",
-    "stroke": "red",
-    "strokeWidth": 0.8
-  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json",
+        "format": { "type": "topojson", "feature": "land" }
+      },
+      "mark": { "type": "geoshape", "fill": "#eaeaea", "stroke": "#aaa", "strokeWidth": 0.5 }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.geojson",
+        "format": { "type": "json", "property": "features" }
+      },
+      "mark": { "type": "geoshape", "fill": "none", "stroke": "#333", "strokeWidth": 0.7 }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/c83629aeee959d719fbea3177d89bff11a3ce5fe/burnt_area_small.geojson",
+        "format": { "type": "json", "property": "features" }
+      },
+      "mark": { "type": "geoshape", "fill": "none", "stroke": "red", "strokeWidth": 0.8 }
+    }
+  ],
   "config": { "view": { "stroke": null } }
 }
