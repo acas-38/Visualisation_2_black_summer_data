@@ -74,16 +74,14 @@
   <p class="sub">Timeline of events and Factors</p>
 
   <div class="grid">
-    <div class="card">
-      <h2>Burnt Area Map</h2>
-      <div id="vis1" class="vis"></div>
-    </div>
+  <!-- Row 1: Fire Locations -->
+  <div class="card">
+    <h2>Fire Locations Map</h2>
+    <div id="vis2" class="vis"></div>
+  </div>
 
-    <div class="card">
-      <h2>Fire Locations Map</h2>
-      <div id="vis2" class="vis"></div>
-    </div>
-
+  <!-- Row 2: Temps + Rain side by side -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 28px;">
     <div class="card">
       <h2>Temperature Comparison</h2>
       <div id="vis3" class="vis"></div>
@@ -94,6 +92,14 @@
       <div id="vis4" class="vis"></div>
     </div>
   </div>
+
+  <!-- Row 3: Burnt Area -->
+  <div class="card">
+    <h2>Burnt Area Map</h2>
+    <div id="vis1" class="vis"></div>
+  </div>
+</div>
+
 
   <div class="links">
     Raw specs:
