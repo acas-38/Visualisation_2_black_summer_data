@@ -15,170 +15,60 @@
           ],
           "mark": {"type": "line", "interpolate": "monotone", "point": true},
           "encoding": {
-            "x": {
-              "field": "month",
-              "type": "ordinal",
-              "sort": ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"],
-              "title": "Month"
-            },
-            "y": {
-              "field": "Temperature",
-              "type": "quantitative",
-              "title": "Temperature (°C)"
-            },
+            "x": {"field": "month","type": "ordinal","sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],"title": "Month"},
+            "y": {"field": "Temperature","type": "quantitative","title": "Temperature (°C)"},
             "color": {
               "field": "Type",
               "type": "nominal",
-              "title": "Temperature Type",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": ["#e25822", "#333"]
-              },
+              "scale": {"domain": ["ave_max_temp","expected temp"],"range": ["#e25822","#333"]},
               "legend": {
-                "title":"null"
+                "title": null,
                 "labelFontSize": 11,
                 "orient": "bottom",
                 "direction": "horizontal",
                 "labelExpr": "datum.label === 'ave_max_temp' ? 'Actual Temperature' : datum.label === 'expected temp' ? 'Expected Temperature' : datum.label"
               }
             },
-            "strokeDash": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": [[], [4, 2]]
-              }
-            }
+            "strokeDash": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": [[],[4,2]]}}
           },
           "title": "Adelaide"
         },
         {
-          "width": 150, "height": 100,
-          "data": {
-            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv",
-            "format": {"type": "csv"}
-          },
-          "transform": [
-            {"filter": "datum.city === 'Melbourne'"},
-            {"fold": ["ave_max_temp", "expected temp"], "as": ["Type", "Temperature"]}
-          ],
-          "mark": {"type": "line", "interpolate": "monotone", "point": true},
+          "width": 150,"height": 100,
+          "data": {"url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv","format": {"type": "csv"}},
+          "transform": [{"filter": "datum.city === 'Melbourne'"},{"fold": ["ave_max_temp","expected temp"],"as": ["Type","Temperature"]}],
+          "mark": {"type": "line","interpolate": "monotone","point": true},
           "encoding": {
-            "x": {
-              "field": "month",
-              "type": "ordinal",
-              "sort": ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"],
-              "title": "Month"
-            },
-            "y": {
-              "field": "Temperature",
-              "type": "quantitative",
-              "title": "Temperature (°C)"
-            },
-            "color": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": ["#e25822", "#333"]
-              },
-              "legend": null
-            },
-            "strokeDash": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": [[], [4, 2]]
-              }
-            }
+            "x": {"field": "month","type": "ordinal","sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],"title": "Month"},
+            "y": {"field": "Temperature","type": "quantitative","title": "Temperature (°C)"},
+            "color": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": ["#e25822","#333"]},"legend": null},
+            "strokeDash": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": [[],[4,2]]}}
           },
           "title": "Melbourne"
         },
         {
-          "width": 150, "height": 100,
-          "data": {
-            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv",
-            "format": {"type": "csv"}
-          },
-          "transform": [
-            {"filter": "datum.city === 'Sydney'"},
-            {"fold": ["ave_max_temp", "expected temp"], "as": ["Type", "Temperature"]}
-          ],
-          "mark": {"type": "line", "interpolate": "monotone", "point": true},
+          "width": 150,"height": 100,
+          "data": {"url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv","format": {"type": "csv"}},
+          "transform": [{"filter": "datum.city === 'Sydney'"},{"fold": ["ave_max_temp","expected temp"],"as": ["Type","Temperature"]}],
+          "mark": {"type": "line","interpolate": "monotone","point": true},
           "encoding": {
-            "x": {
-              "field": "month",
-              "type": "ordinal",
-              "sort": ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"],
-              "title": "Month"
-            },
-            "y": {
-              "field": "Temperature",
-              "type": "quantitative",
-              "title": "Temperature (°C)"
-            },
-            "color": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": ["#e25822", "#333"]
-              },
-              "legend": null
-            },
-            "strokeDash": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": [[], [4, 2]]
-              }
-            }
+            "x": {"field": "month","type": "ordinal","sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],"title": "Month"},
+            "y": {"field": "Temperature","type": "quantitative","title": "Temperature (°C)"},
+            "color": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": ["#e25822","#333"]},"legend": null},
+            "strokeDash": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": [[],[4,2]]}}
           },
           "title": "Sydney"
         },
         {
-          "width": 150, "height": 100,
-          "data": {
-            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv",
-            "format": {"type": "csv"}
-          },
-          "transform": [
-            {"filter": "datum.city === 'Brisbane'"},
-            {"fold": ["ave_max_temp", "expected temp"], "as": ["Type", "Temperature"]}
-          ],
-          "mark": {"type": "line", "interpolate": "monotone", "point": true},
+          "width": 150,"height": 100,
+          "data": {"url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv","format": {"type": "csv"}},
+          "transform": [{"filter": "datum.city === 'Brisbane'"},{"fold": ["ave_max_temp","expected temp"],"as": ["Type","Temperature"]}],
+          "mark": {"type": "line","interpolate": "monotone","point": true},
           "encoding": {
-            "x": {
-              "field": "month",
-              "type": "ordinal",
-              "sort": ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"],
-              "title": "Month"
-            },
-            "y": {
-              "field": "Temperature",
-              "type": "quantitative",
-              "title": "Temperature (°C)"
-            },
-            "color": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": ["#e25822", "#333"]
-              },
-              "legend": null
-            },
-            "strokeDash": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": [[], [4, 2]]
-              }
-            }
+            "x": {"field": "month","type": "ordinal","sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],"title": "Month"},
+            "y": {"field": "Temperature","type": "quantitative","title": "Temperature (°C)"},
+            "color": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": ["#e25822","#333"]},"legend": null},
+            "strokeDash": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": [[],[4,2]]}}
           },
           "title": "Brisbane"
         }
@@ -187,184 +77,62 @@
     {
       "hconcat": [
         {
-          "width": 150, "height": 100,
-          "data": {
-            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv",
-            "format": {"type": "csv"}
-          },
-          "transform": [
-            {"filter": "datum.city === 'Perth'"},
-            {"fold": ["ave_max_temp", "expected temp"], "as": ["Type", "Temperature"]}
-          ],
-          "mark": {"type": "line", "interpolate": "monotone", "point": true},
+          "width": 150,"height": 100,
+          "data": {"url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv","format": {"type": "csv"}},
+          "transform": [{"filter": "datum.city === 'Perth'"},{"fold": ["ave_max_temp","expected temp"],"as": ["Type","Temperature"]}],
+          "mark": {"type": "line","interpolate": "monotone","point": true},
           "encoding": {
-            "x": {
-              "field": "month",
-              "type": "ordinal",
-              "sort": ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"],
-              "title": "Month"
-            },
-            "y": {
-              "field": "Temperature",
-              "type": "quantitative",
-              "title": "Temperature (°C)"
-            },
-            "color": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": ["#e25822", "#333"]
-              },
-              "legend": null
-            },
-            "strokeDash": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": [[], [4, 2]]
-              }
-            }
+            "x": {"field": "month","type": "ordinal","sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],"title": "Month"},
+            "y": {"field": "Temperature","type": "quantitative","title": "Temperature (°C)"},
+            "color": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": ["#e25822","#333"]},"legend": null},
+            "strokeDash": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": [[],[4,2]]}}
           },
           "title": "Perth"
         },
         {
-          "width": 150, "height": 100,
-          "data": {
-            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv",
-            "format": {"type": "csv"}
-          },
-          "transform": [
-            {"filter": "datum.city === 'Hobart'"},
-            {"fold": ["ave_max_temp", "expected temp"], "as": ["Type", "Temperature"]}
-          ],
-          "mark": {"type": "line", "interpolate": "monotone", "point": true},
+          "width": 150,"height": 100,
+          "data": {"url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv","format": {"type": "csv"}},
+          "transform": [{"filter": "datum.city === 'Hobart'"},{"fold": ["ave_max_temp","expected temp"],"as": ["Type","Temperature"]}],
+          "mark": {"type": "line","interpolate": "monotone","point": true},
           "encoding": {
-            "x": {
-              "field": "month",
-              "type": "ordinal",
-              "sort": ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"],
-              "title": "Month"
-            },
-            "y": {
-              "field": "Temperature",
-              "type": "quantitative",
-              "title": "Temperature (°C)"
-            },
-            "color": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": ["#e25822", "#333"]
-              },
-              "legend": null
-            },
-            "strokeDash": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": [[], [4, 2]]
-              }
-            }
+            "x": {"field": "month","type": "ordinal","sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],"title": "Month"},
+            "y": {"field": "Temperature","type": "quantitative","title": "Temperature (°C)"},
+            "color": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": ["#e25822","#333"]},"legend": null},
+            "strokeDash": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": [[],[4,2]]}}
           },
           "title": "Hobart"
         },
         {
-          "width": 150, "height": 100,
-          "data": {
-            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv",
-            "format": {"type": "csv"}
-          },
-          "transform": [
-            {"filter": "datum.city === 'Canberra'"},
-            {"fold": ["ave_max_temp", "expected temp"], "as": ["Type", "Temperature"]}
-          ],
-          "mark": {"type": "line", "interpolate": "monotone", "point": true},
+          "width": 150,"height": 100,
+          "data": {"url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv","format": {"type": "csv"}},
+          "transform": [{"filter": "datum.city === 'Canberra'"},{"fold": ["ave_max_temp","expected temp"],"as": ["Type","Temperature"]}],
+          "mark": {"type": "line","interpolate": "monotone","point": true},
           "encoding": {
-            "x": {
-              "field": "month",
-              "type": "ordinal",
-              "sort": ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"],
-              "title": "Month"
-            },
-            "y": {
-              "field": "Temperature",
-              "type": "quantitative",
-              "title": "Temperature (°C)"
-            },
-            "color": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": ["#e25822", "#333"]
-              },
-              "legend": null
-            },
-            "strokeDash": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": [[], [4, 2]]
-              }
-            }
+            "x": {"field": "month","type": "ordinal","sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],"title": "Month"},
+            "y": {"field": "Temperature","type": "quantitative","title": "Temperature (°C)"},
+            "color": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": ["#e25822","#333"]},"legend": null},
+            "strokeDash": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": [[],[4,2]]}}
           },
           "title": "Canberra"
         },
         {
-          "width": 150, "height": 100,
-          "data": {
-            "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv",
-            "format": {"type": "csv"}
-          },
-          "transform": [
-            {"filter": "datum.city === 'Darwin'"},
-            {"fold": ["ave_max_temp", "expected temp"], "as": ["Type", "Temperature"]}
-          ],
-          "mark": {"type": "line", "interpolate": "monotone", "point": true},
+          "width": 150,"height": 100,
+          "data": {"url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Temp_ave.csv","format": {"type": "csv"}},
+          "transform": [{"filter": "datum.city === 'Darwin'"},{"fold": ["ave_max_temp","expected temp"],"as": ["Type","Temperature"]}],
+          "mark": {"type": "line","interpolate": "monotone","point": true},
           "encoding": {
-            "x": {
-              "field": "month",
-              "type": "ordinal",
-              "sort": ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"],
-              "title": "Month"
-            },
-            "y": {
-              "field": "Temperature",
-              "type": "quantitative",
-              "title": "Temperature (°C)"
-            },
-            "color": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": ["#e25822", "#333"]
-              },
-              "legend": null
-            },
-            "strokeDash": {
-              "field": "Type",
-              "type": "nominal",
-              "scale": {
-                "domain": ["ave_max_temp", "expected temp"],
-                "range": [[], [4, 2]]
-              }
-            }
+            "x": {"field": "month","type": "ordinal","sort": ["Sep","Oct","Nov","Dec","Jan","Feb"],"title": "Month"},
+            "y": {"field": "Temperature","type": "quantitative","title": "Temperature (°C)"},
+            "color": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": ["#e25822","#333"]},"legend": null},
+            "strokeDash": {"field": "Type","type": "nominal","scale": {"domain": ["ave_max_temp","expected temp"],"range": [[],[4,2]]}}
           },
           "title": "Darwin"
         }
       ]
     }
   ],
-  "config": {
-    "axis": {"labelFontSize": 10, "titleFontSize": 11},
-    "legend": {"orient": "bottom", "labelFontSize": 11, "titleFontSize": 12}
-  }
+  "config": {"axis": {"labelFontSize": 10,"titleFontSize": 11},"legend": {"orient": "bottom","labelFontSize": 11,"titleFontSize": 12}}
 }
+
 
 
