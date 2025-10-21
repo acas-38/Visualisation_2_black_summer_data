@@ -88,29 +88,37 @@
       <h2>Temperature Comparison</h2>
       <div id="vis3" class="vis"></div>
     </div>
+
+    <div class="card">
+      <h2>Rainfall Graphs</h2>
+      <div id="vis4" class="vis"></div>
+    </div>
   </div>
 
   <div class="links">
     Raw specs:
     <a id="l1" href="#" target="_blank" rel="noopener">Burnt Area</a> ·
     <a id="l2" href="#" target="_blank" rel="noopener">Fire Locations</a> ·
-    <a id="l3" href="#" target="_blank" rel="noopener">Temp Comparison</a>
+    <a id="l3" href="#" target="_blank" rel="noopener">Temp Comparison</a> ·
+    <a id="l4" href="#" target="_blank" rel="noopener">Rainfall Graphs</a>
   </div>
 
   <div class="footer">Powered by Vega-Lite & vega-embed</div>
 
   <script>
-    // ✅ Correct .json URLs
-   const VIS_URLS = {
-  burnt: "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/Brunt_areas_map.json",
-  fires: "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/Fire_locations_map.json",
-  temps: "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/Temp_Comp_graph.json"
-};
+    // ✅ Correct RAW JSON URLs
+    const VIS_URLS = {
+      burnt: "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/Brunt_areas_map.json",
+      fires: "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/Fire_locations_map.json",
+      temps: "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/Temp_Comp_graph.json",
+      rain:  "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/Rain_fall_graph.json"
+    };
 
     // Update link URLs
     document.getElementById("l1").href = VIS_URLS.burnt;
     document.getElementById("l2").href = VIS_URLS.fires;
     document.getElementById("l3").href = VIS_URLS.temps;
+    document.getElementById("l4").href = VIS_URLS.rain;
 
     const embedOpts = { actions: false, renderer: "canvas" };
 
@@ -127,9 +135,12 @@
       });
     }
 
+    // Mount all visualisations
     mount("#vis1", VIS_URLS.burnt);
     mount("#vis2", VIS_URLS.fires);
     mount("#vis3", VIS_URLS.temps);
+    mount("#vis4", VIS_URLS.rain);
   </script>
 </body>
 </html>
+
