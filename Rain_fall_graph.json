@@ -6,7 +6,7 @@
       "hconcat": [
         {
           "title": "Melbourne",
-          "width": 120, "height": 70,
+          "width": 150, "height": 100,
           "data": { "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv" },
           "transform": [
             { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
@@ -33,7 +33,7 @@
         },
         {
           "title": "Sydney",
-          "width": 120, "height": 70,
+          "width": 150, "height": 100,
           "data": { "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv" },
           "transform": [
             { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
@@ -55,7 +55,7 @@
         },
         {
           "title": "Hobart",
-          "width": 120, "height": 70,
+          "width": 150, "height": 100,
           "data": { "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv" },
           "transform": [
             { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
@@ -77,7 +77,7 @@
         },
         {
           "title": "Perth",
-          "width": 120, "height": 70,
+          "width": 150, "height": 100,
           "data": { "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv" },
           "transform": [
             { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
@@ -103,7 +103,7 @@
       "hconcat": [
         {
           "title": "Adelaide",
-          "width": 120, "height": 70,
+          "width": 150, "height": 100,
           "data": { "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv" },
           "transform": [
             { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
@@ -125,7 +125,7 @@
         },
         {
           "title": "Darwin",
-          "width": 120, "height": 70,
+          "width": 150, "height": 100,
           "data": { "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv" },
           "transform": [
             { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
@@ -147,7 +147,7 @@
         },
         {
           "title": "Canberra",
-          "width": 120, "height": 70,
+          "width": 150, "height": 100,
           "data": { "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv" },
           "transform": [
             { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
@@ -169,7 +169,7 @@
         },
         {
           "title": "Brisbane",
-          "width": 120, "height": 70,
+          "width": 150, "height": 100,
           "data": { "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/refs/heads/main/Rain_fall_data.csv" },
           "transform": [
             { "calculate": "datum.city=='Sydeny' ? 'Sydney' : datum.city", "as": "city_fix" },
