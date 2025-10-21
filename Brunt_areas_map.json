@@ -7,13 +7,6 @@
   "layer": [
     {
       "data": {
-        "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
-        "format": { "type": "topojson", "feature": "countries" }
-      },
-      "mark": { "type": "geoshape", "fill": "#41da62", "stroke": "white" }
-    },
-    {
-      "data": {
         "url": "https://raw.githubusercontent.com/acas-38/Visualisation_2_black_summer_data/main/burnt_area_small.geojson",
         "format": { "type": "json", "property": "features" }
       },
